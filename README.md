@@ -119,4 +119,54 @@ Adjust these settings as per your backend and frontend endpoint, and enable/disa
 
 ---
 
-**Need help with a specific platform or configuration? Ask for step-by-step examples!**
+# Tutorial: JOINX
+
+JOINX is a multi-platform real-time engagement application (like video conferencing) that can be run as a standalone app or embedded as an SDK. It provides core features for video/audio calls and chat, built on top of Agora SDKs, and includes a *powerful customization API* allowing developers to build **branded versions** by injecting custom UI components, logic, and configurations across different **entry points** for web, native, and desktop platforms.
+
+
+## Visual Overview
+
+```mermaid
+flowchart TD
+    A0["App Entry Points
+"]
+    A1["Agora SDK Bridges
+"]
+    A2["Application State & Contexts
+"]
+    A3["Customization API
+"]
+    A4["Routing and Navigation
+"]
+    A5["Authentication System
+"]
+    A6["Application Configuration
+"]
+    A0 -- "Initializes Navigation" --> A4
+    A4 -- "Uses Auth for Routes" --> A5
+    A5 -- "Updates User State" --> A2
+    A2 -- "Provides Device State" --> A1
+    A1 -- "Updates Real-time State" --> A2
+    A0 -- "Loads Configuration" --> A6
+    A6 -- "Configures Customization" --> A3
+    A3 -- "Overrides Components" --> A0
+```
+
+## Chapters
+
+1. [App Entry Points
+](01_app_entry_points_.md)
+2. [Application Configuration
+](02_application_configuration_.md)
+3. [Application State & Contexts
+](03_application_state___contexts_.md)
+4. [Authentication System
+](04_authentication_system_.md)
+5. [Routing and Navigation
+](05_routing_and_navigation_.md)
+6. [Agora SDK Bridges
+](06_agora_sdk_bridges_.md)
+7. [Customization API
+](07_customization_api_.md)
+
+---
