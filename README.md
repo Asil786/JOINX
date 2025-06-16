@@ -12,7 +12,7 @@
   </div>
 
 </div>
-# JOINX Repository: Installation and Configuration Guide
+
 
 ## Installation Steps
 
