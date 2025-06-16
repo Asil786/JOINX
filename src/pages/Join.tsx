@@ -1,14 +1,3 @@
-/*
-********************************************
- Copyright © 2021 Agora Lab, Inc., all rights reserved.
- AppBuilder and all associated components, source code, APIs, services, and documentation 
- (the “Materials”) are owned by Agora Lab, Inc. and its licensors. The Materials may not be 
- accessed, used, modified, or distributed for any purpose without a license from Agora Lab, Inc.  
- Use without a license or in violation of any license terms and conditions (including use for 
- any purpose competitive to Agora Lab, Inc.’s business) is strictly prohibited. For more 
- information visit https://appbuilder.agora.io. 
-*********************************************
-*/
 import React, {useState, useContext, useEffect} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import {useHistory} from '../components/Router';
@@ -49,6 +38,8 @@ import {
   joinRoomInputLabel,
   joinRoomInputPlaceHolderText,
 } from '../language/default-labels/joinScreenLabels';
+// --- ADD THIS IMPORT ---
+import { createRoomMadeByLabel } from '../language/default-labels/createScreenLabels';
 import {LogSource, logger} from '../logger/AppBuilderLogger';
 import isSDK from '../utils/isSDK';
 import SDKEvents from '../utils/SdkEvents';
@@ -77,6 +68,9 @@ const Join = () => {
   const createBtnText = useString<any>(joinRoomCreateBtnText)({
     eventMode: $config.EVENT_MODE,
   });
+
+  // --- ADD THIS LINE ---
+  const madeByLabel = useString(createRoomMadeByLabel)();
 
   //toast
   const invalidRoomIdToastHeading = useString<any>(joinRoomErrorToastHeading)({
@@ -229,6 +223,8 @@ const Join = () => {
             />
             <Spacer size={16} />
             <LinkButton text={createBtnText} onPress={() => createMeeting()} />
+            {/* --- ADD THIS LINE BELOW THE CREATE BUTTON --- */}
+            <Text style={style.madeByLabel}>{madeByLabel}</Text>
             {shouldAuthenticate ? (
               <LogoutButton
                 //@ts-ignore
@@ -271,6 +267,14 @@ const style = StyleSheet.create({
     lineHeight: ThemeConfig.FontSize.extraLarge,
     color: $config.FONT_COLOR,
     fontFamily: ThemeConfig.FontFamily.sansPro,
+  },
+  // --- ADD THIS STYLE ---
+  madeByLabel: {
+    marginTop: 8,
+    color: '#a3a3a3',
+    fontSize: 15,
+    fontWeight: '400',
+    textAlign: 'center',
   },
 });
 

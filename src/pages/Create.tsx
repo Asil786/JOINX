@@ -1,14 +1,3 @@
-/*
-********************************************
- Copyright © 2021 Agora Lab, Inc., all rights reserved.
- AppBuilder and all associated components, source code, APIs, services, and documentation 
- (the “Materials”) are owned by Agora Lab, Inc. and its licensors. The Materials may not be 
- accessed, used, modified, or distributed for any purpose without a license from Agora Lab, Inc.  
- Use without a license or in violation of any license terms and conditions (including use for 
- any purpose competitive to Agora Lab, Inc.’s business) is strictly prohibited. For more 
- information visit https://appbuilder.agora.io. 
-*********************************************
-*/
 import React, {useEffect, useState, useContext} from 'react';
 import {View, Text, StyleSheet, ScrollView, Pressable} from 'react-native';
 import {useHistory} from '../components/Router';
@@ -62,6 +51,7 @@ import {
   createRoomMakeEveryOneCoHostTooltipText,
   createRoomSuccessToastHeading,
   createRoomSuccessToastSubHeading,
+  createRoomMadeByLabel, // <-- Added import
 } from '../language/default-labels/createScreenLabels';
 import {LogSource, logger} from '../logger/AppBuilderLogger';
 import SDKEvents from '../utils/SdkEvents';
@@ -139,7 +129,6 @@ const Create = () => {
   //create button
 
   const joinWithRoomID = useString(createRoomJoinWithID)();
-
   //toast
   const createRoomSuccessToastHeadingText = useString(
     createRoomSuccessToastHeading,
@@ -155,6 +144,9 @@ const Create = () => {
   const createRoomErrorToastSubHeadingText = useString(
     createRoomErrorToastSubHeading,
   )();
+
+  // developer credit label
+  const madeByLabel = useString(createRoomMadeByLabel)();
 
   const isDesktop = !isMobileUA();
 
@@ -183,7 +175,7 @@ const Create = () => {
     // setRandomRoomTitle(
     //   `${randomNameGenerator(3)}-${randomNameGenerator(
     //     3,
-    //   )}-${randomNameGenerator(3)}`,
+    //   )}-${randomNameGenerator(3)}`
     // );
     logger.log(
       LogSource.Internals,
@@ -338,8 +330,6 @@ const Create = () => {
                         if (!$config.BACKEND_ENDPOINT) {
                           showError();
                         } else {
-                          // !roomTitle?.trim() &&
-                          //   onChangeRoomTitle(randomRoomTitle);
                           createRoomAndNavigateToShare(
                             roomTitle?.trim(),
                             pstnToggle,
@@ -434,8 +424,6 @@ const Create = () => {
                       if (!$config.BACKEND_ENDPOINT) {
                         showError();
                       } else {
-                        // !roomTitle?.trim() &&
-                        //   onChangeRoomTitle(randomRoomTitle);
                         createRoomAndNavigateToShare(
                           roomTitle?.trim(),
                           pstnToggle,
@@ -457,6 +445,8 @@ const Create = () => {
                       history.push('/join');
                     }}
                   />
+                  {/* Developer credit label */}
+                  <Text style={style.madeByLabel}>{madeByLabel}</Text>
                 </View>
               </Card>
             </ScrollView>
@@ -505,6 +495,13 @@ const style = StyleSheet.create({
   btnContainer: {
     width: '100%',
     alignItems: 'center',
+  },
+  madeByLabel: {
+    marginTop: 8,
+    color: '#a3a3a3',
+    fontSize: 15,
+    fontWeight: '400',
+    textAlign: 'center',
   },
   toggleContainer: {
     flexDirection: 'row',

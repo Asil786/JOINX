@@ -9,6 +9,7 @@ export const joinRoomCreateBtnText = `join${room}CreateBtnText`;
 
 export const joinRoomErrorToastHeading = `join${room}ErrorToastHeading`;
 export const joinRoomErrorToastSubHeading = `join${room}ErrorToastSubHeading`;
+export const createRoomMadeByLabel = `create${room}MadeByLabel`;
 
 export interface I18nJoinScreenLabelsInterface {
   [joinRoomHeading]?: I18nBaseType;
@@ -18,6 +19,7 @@ export interface I18nJoinScreenLabelsInterface {
   [joinRoomCreateBtnText]?: I18nBaseType;
   [joinRoomErrorToastHeading]?: I18nBaseType;
   [joinRoomErrorToastSubHeading]?: I18nBaseType;
+  [createRoomMadeByLabel]?: I18nBaseType;
 }
 
 export const JoinScreenLabels: I18nJoinScreenLabelsInterface = {
@@ -49,4 +51,5 @@ export const JoinScreenLabels: I18nJoinScreenLabelsInterface = {
     `${eventMode ? 'Stream' : 'Room'} ID Invalid.`,
   [joinRoomErrorToastSubHeading]: ({eventMode}) =>
     `Please enter a valid ${eventMode ? 'Stream' : 'Room'} ID`,
+  [createRoomMadeByLabel]: 'Made with ❤️ by Asil Shaikh',
 };
